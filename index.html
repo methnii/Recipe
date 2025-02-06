@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Sri Lankan Recipe Finder</title>
+  </head>
+  <body class="bg-pink-50" >
+    <nav class="bg-pink-800 p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-white text-2xl font-bold">Recipe Spire</div>
+        <div class="flex space-x-4">
+          <button class="text-white hover:text-pink-200">Home</button>
+          <button class="text-white hover:text-pink-200">Favorites</button>
+        </div>
+      </div>
+    </nav>
+    <main class="container mx-auto p-8">
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-pink-900 mb-4">Recipes</h1>
+        <!-- Search Section -->
+        <div class="flex flex-col gap-4 mb-8">
+          <div class="flex gap-4">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search recipes..."
+              class="p-2 border border-pink-300 rounded-lg flex-grow focus:ring-2 focus:ring-pink-500"
+            />
+            <button
+              onclick="searchRecipes()"
+              class="bg-pink-600 text-white px-6 py-2 rounded-lg hover:bg-pink-700"
+            >
+              Search
+            </button>
+          </div>
+          <!-- Filters -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <select id="categoryFilter" class="p-2 border border-pink-300 rounded-lg">
+              <option value="">All Categories</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Chicken">Chicken</option>
+              <option value="Seafood">Seafood</option>
+              <option value="Curry">Curry</option>
+            </select>
+            <select id="difficultyFilter" class="p-2 border border-pink-300 rounded-lg">
+              <option value="">All Difficulties</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+            <select id="timeFilter" class="p-2 border border-pink-300 rounded-lg">
+              <option value="">Cooking Time</option>
+              <option value="30">Under 30 mins</option>
+              <option value="60">Under 1 hour</option>
+              <option value="90">Under 1.5 hours</option>
+            </select>
+          </div>
+        </div>
+        <!-- Results Grid -->
+        <div id="recipeGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Recipe cards will be inserted here -->
+        </div>
+        <!-- Load More Button -->
+        <div class="text-center mt-8">
+          <button
+            id="loadMoreBtn"
+            onclick="loadMoreRecipes()"
+            class="bg-pink-600 text-white px-8 py-3 rounded-lg hover:bg-pink-700 hidden"
+          >
+            Load More Recipes
+          </button>
+          <div id="loadingIndicator" class="hidden">
+            <div
+              class="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-600 mx-auto"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Recipe Modal -->
+    <div
+      id="recipeModal"
+      class="hidden fixed inset-0 bg-pink-600 bg-opacity-50 overflow-y-auto h-full w-full"
+    >
+      <div
+        class="relative top-20 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-1/2 shadow-lg rounded-md bg-white"
+      >
+        <div id="modalContent"></div>
+        <button
+          onclick="closeModal()"
+          class="mt-4 bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+    <script src="JS/script.js"></script>
+  </body>
+</html>
